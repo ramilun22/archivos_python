@@ -9,6 +9,7 @@
 
 # Ejercicios con diccionarios
 
+from binhex import FInfo
 import csv
 
 
@@ -18,6 +19,7 @@ def ej1():
     # el diccionario vacio debe llamarse "stock"
     
     # stock = ....
+    stock = {}
 
     # Luego de crear el diccionario completelo
     # con el siguiente stock:
@@ -25,11 +27,17 @@ def ej1():
     # tuercas = 150
     # arandelas = 300
 
+    stock ['tornillos'] = 100
+    stock ['tuercas'] = 150
+    stock ['arandelas'] = 300
+
     # Los nombres tornillos, tuercas y arandelas
     # son las claves (keys) del diccionario
     # mientras que las cantidades son los valores (values)
 
     # Una vez armado el diccionario imprimirlo en pantalla con print
+
+    print(stock)
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
 
@@ -66,6 +74,27 @@ def ej2():
     # imprimir en pantalla con print el diccionario con el stock final
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    while True:
+         print('ingrese el producto que quiere agregar a stock:') 
+         control = str(input())
+         if control == 'fin':
+            print('El stock final es:', strock)
+            break
+         else:
+            if control in strock:
+                print('Ingrese la cantidad de:', control)
+                producto = int(input())
+                strock[control] = producto + strock[control]
+            else:
+                print('Error el producto ingresado no se encuantra en stock')
+
+
+
+            
+
+
+
 
 
 if __name__ == '__main__':

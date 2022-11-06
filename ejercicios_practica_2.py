@@ -27,10 +27,24 @@ def ej3():
     # para cumplir con el enunciado del ejercicio
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    csvfile = open('stock.csv')
+    strok = list(csv.DictReader(csvfile))
+
+    suma = 0
+    for i in strok:
+        suma += int(i['tornillos'])
     
+    print('El stock de tornillos es:', suma)
+    csvfile.close()
+        
+
+
 
 
 def ej4():
+    print('-------------------')
+    print('-------------------')    
     print('Ejercicios con archivos CSV 2º')
     archivo = 'propiedades.csv'
 
@@ -47,6 +61,31 @@ def ej4():
     # utilizando "try except", tema que se verá la clase que viene.
 
     # Comenzar aquí, recuerde el identado dentro de esta funcion
+
+    csvfile = open(archivo, 'r')
+    datos_departamento = list(csv.DictReader(csvfile))
+
+    sum_2ambientes = 0
+    sum_3ambientes = 0
+    
+    cant_deptos = len(datos_departamento)
+    
+    for i_deptos in range(cant_deptos):
+        row = datos_departamento[i_deptos]
+        try:
+            cant_ambientes = int(row.get('ambientes'))
+            
+            if cant_ambientes == 2:
+                sum_2ambientes = sum_2ambientes + 1
+            elif cant_ambientes == 3:
+                sum_3ambientes = sum_3ambientes + 1
+        except:
+            continue
+            
+    print('Hay', sum_2ambientes, 'departamentos de 2 ambientes.')
+    print('Hay', sum_3ambientes, 'departamentos de 3 ambientes.')
+
+    csvfile.close()
 
 
 if __name__ == '__main__':
